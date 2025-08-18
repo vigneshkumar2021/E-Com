@@ -6,15 +6,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment History - Customer Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .page-header {
+            background: linear-gradient(90deg, #0d6efd, #6610f2);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .table-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+
+        .badge {
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .btn-custom {
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 
-<body class="bg-light">
+<body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">MyShop</a>
-            <div class="collapse navbar-collapse">
+            <a class="navbar-brand fw-bold" href="#">MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="customer-dashboard.html">Dashboard</a></li>
                     <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
@@ -27,54 +69,62 @@
         </div>
     </nav>
 
-    <!-- Page Content -->
-    <div class="container my-5">
-        <h2 class="mb-4">Payment History</h2>
+    <!-- Header -->
+    <div class="container">
+        <div class="page-header">
+            <h2><i class="bi bi-credit-card-2-front"></i> Payment History</h2>
+            <p class="mb-0">Keep track of all your payments, invoices, and pending orders.</p>
+        </div>
 
-        <!-- Table -->
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle">
-                <thead class="table-dark">
-                    <tr>
-                        <th>#</th>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Payment Method</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th>Invoice</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>#ORD12345</td>
-                        <td>2025-08-10</td>
-                        <td>Credit Card</td>
-                        <td>$120.00</td>
-                        <td><span class="badge bg-success">Paid</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>#ORD12346</td>
-                        <td>2025-08-15</td>
-                        <td>PayPal</td>
-                        <td>$75.00</td>
-                        <td><span class="badge bg-success">Paid</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Download</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>#ORD12347</td>
-                        <td>2025-08-17</td>
-                        <td>Cash on Delivery</td>
-                        <td>$60.00</td>
-                        <td><span class="badge bg-danger">Pending</span></td>
-                        <td><a href="#" class="btn btn-sm btn-secondary disabled">Unavailable</a></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Payment History Table -->
+        <div class="table-card p-3">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Payment Method</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>#ORD12345</td>
+                            <td>2025-08-10</td>
+                            <td><i class="bi bi-credit-card-fill text-primary"></i> Credit Card</td>
+                            <td>$120.00</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <td><a href="#" class="btn btn-sm btn-primary btn-custom"><i class="bi bi-download"></i>
+                                    Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>#ORD12346</td>
+                            <td>2025-08-15</td>
+                            <td><i class="bi bi-paypal text-info"></i> PayPal</td>
+                            <td>$75.00</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                            <td><a href="#" class="btn btn-sm btn-primary btn-custom"><i class="bi bi-download"></i>
+                                    Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>#ORD12347</td>
+                            <td>2025-08-17</td>
+                            <td><i class="bi bi-cash-coin text-success"></i> Cash on Delivery</td>
+                            <td>$60.00</td>
+                            <td><span class="badge bg-danger">Pending</span></td>
+                            <td><a href="#" class="btn btn-sm btn-secondary btn-custom disabled"><i
+                                        class="bi bi-file-earmark-excel"></i> Unavailable</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

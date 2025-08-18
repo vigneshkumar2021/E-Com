@@ -2,111 +2,172 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seller Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    /* Dashboard Header */
+    .dashboard-header {
+      background: linear-gradient(90deg, #0d6efd, #6610f2);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 12px;
+      margin: 30px 0;
+      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .dashboard-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid white;
+      margin-bottom: 10px;
+    }
+
+    /* Stat Cards */
+    .stat-card {
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    /* Orders Table */
+    .orders-table {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+
+    .table thead {
+      background: #343a40;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="seller-dashboard.html">MyStore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sellerNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="sellerNavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="seller-dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="add-product.html">Add Product</a></li>
-                    <li class="nav-item"><a class="nav-link" href="my-products.html">My Products</a></li>
-                    <li class="nav-item"><a class="nav-link" href="seller-orders.html">Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="seller-profile.html">Profile</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="seller-dashboard.html">MyStore</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sellerNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="sellerNavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="seller-dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="add-product.html"><i class="bi bi-plus-circle"></i> Add Product</a></li>
+          <li class="nav-item"><a class="nav-link" href="my-products.html"><i class="bi bi-box-seam"></i> My Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="seller-orders.html"><i class="bi bi-cart-check"></i> Orders</a></li>
+          <li class="nav-item"><a class="nav-link" href="seller-profile.html"><i class="bi bi-person-circle"></i> Profile</a></li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <div class="container">
+    <div class="dashboard-header">
+      <img src="https://via.placeholder.com/80" alt="Seller Profile">
+      <h2>Welcome, Seller!</h2>
+      <p class="mb-0">Here’s an overview of your store performance.</p>
+    </div>
+
     <!-- Dashboard Stats -->
-    <div class="container my-5">
-        <h2 class="mb-4">Welcome, Seller!</h2>
-        <div class="row g-4">
-            <div class="col-md-3">
-                <div class="card text-center bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Sales</h5>
-                        <p class="display-6">$25,000</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Products</h5>
-                        <p class="display-6">120</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Orders</h5>
-                        <p class="display-6">350</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card text-center bg-light">
-                    <div class="card-body">
-                        <h5 class="card-title">Earnings</h5>
-                        <p class="display-6">$5,000</p>
-                    </div>
-                </div>
-            </div>
+    <div class="row g-4 mb-5">
+      <div class="col-md-3">
+        <div class="card stat-card text-center p-3 bg-light">
+          <div class="stat-icon text-primary"><i class="bi bi-currency-dollar"></i></div>
+          <h6>Total Sales</h6>
+          <p class="display-6 fw-bold">$25,000</p>
         </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card text-center p-3 bg-light">
+          <div class="stat-icon text-success"><i class="bi bi-box-seam"></i></div>
+          <h6>Products</h6>
+          <p class="display-6 fw-bold">120</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card text-center p-3 bg-light">
+          <div class="stat-icon text-warning"><i class="bi bi-cart-check"></i></div>
+          <h6>Orders</h6>
+          <p class="display-6 fw-bold">350</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card stat-card text-center p-3 bg-light">
+          <div class="stat-icon text-info"><i class="bi bi-wallet2"></i></div>
+          <h6>Earnings</h6>
+          <p class="display-6 fw-bold">$5,000</p>
+        </div>
+      </div>
     </div>
 
     <!-- Recent Orders Table -->
-    <div class="container mb-5">
-        <h4 class="mb-3">Recent Orders</h4>
-        <table class="table table-striped">
-            <thead class="table-dark">
-                <tr>
-                    <th>Order ID</th>
-                    <th>Product</th>
-                    <th>Customer</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>#1021</td>
-                    <td>Wireless Earbuds</td>
-                    <td>John Doe</td>
-                    <td><span class="badge bg-success">Delivered</span></td>
-                    <td>Aug 10, 2025</td>
-                </tr>
-                <tr>
-                    <td>#1022</td>
-                    <td>Smartwatch</td>
-                    <td>Mary Smith</td>
-                    <td><span class="badge bg-warning">Pending</span></td>
-                    <td>Aug 12, 2025</td>
-                </tr>
-                <tr>
-                    <td>#1023</td>
-                    <td>Laptop Bag</td>
-                    <td>David Lee</td>
-                    <td><span class="badge bg-info">Shipped</span></td>
-                    <td>Aug 13, 2025</td>
-                </tr>
-            </tbody>
+    <div class="orders-table p-3">
+      <h4 class="mb-3"><i class="bi bi-clock-history"></i> Recent Orders</h4>
+      <div class="table-responsive">
+        <table class="table align-middle table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Product</th>
+              <th>Customer</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#1021</td>
+              <td>Wireless Earbuds</td>
+              <td>John Doe</td>
+              <td><span class="badge bg-success">Delivered</span></td>
+              <td>Aug 10, 2025</td>
+            </tr>
+            <tr>
+              <td>#1022</td>
+              <td>Smartwatch</td>
+              <td>Mary Smith</td>
+              <td><span class="badge bg-warning">Pending</span></td>
+              <td>Aug 12, 2025</td>
+            </tr>
+            <tr>
+              <td>#1023</td>
+              <td>Laptop Bag</td>
+              <td>David Lee</td>
+              <td><span class="badge bg-info">Shipped</span></td>
+              <td>Aug 13, 2025</td>
+            </tr>
+          </tbody>
         </table>
+      </div>
     </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

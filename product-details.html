@@ -2,77 +2,220 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Product Details - MyShop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Details - MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .product-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: gray;
+      margin-left: 10px;
+    }
+
+    .offer {
+      color: green;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    .btn-buy {
+      background-color: #ff5722;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-buy:hover {
+      background-color: #e64a19;
+    }
+
+    .specs ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .specs ul li {
+      margin-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .review-stars {
+      color: #ffc107;
+    }
+
+    .related-product {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .related-product:hover {
+      transform: translateY(-5px);
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">MyShop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="products.html">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Product Section -->
-    <div class="container my-5">
-        <div class="row">
-            <!-- Product Image -->
-            <div class="col-md-6">
-                <img src="https://via.placeholder.com/400" class="img-fluid rounded" alt="Product">
-            </div>
-
-            <!-- Product Info -->
-            <div class="col-md-6">
-                <h2>Product A</h2>
-                <p class="text-muted">Category: Electronics</p>
-                <h4 class="text-primary">₹699</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. High-quality product with warranty.</p>
-
-                <form>
-                    <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity</label>
-                        <input type="number" id="quantity" class="form-control w-25" value="1" min="1">
-                    </div>
-                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                    <button type="button" class="btn btn-outline-secondary">Add to Wishlist</button>
-                </form>
-            </div>
-        </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="products.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Reviews -->
-    <div class="container my-5">
-        <h3>Customer Reviews</h3>
-        <div class="border p-3 rounded mb-3">
-            <strong>John Doe</strong> <span class="text-warning">★★★★☆</span>
-            <p>Good product, value for money.</p>
+  <!-- Product Section -->
+  <div class="container my-5">
+    <div class="row">
+      <!-- Product Image -->
+      <div class="col-md-6 text-center">
+        <img src="https://via.placeholder.com/400" class="img-fluid rounded shadow" alt="Product">
+        <div class="mt-3">
+          <img src="https://via.placeholder.com/80" class="border rounded me-2" alt="">
+          <img src="https://via.placeholder.com/80" class="border rounded me-2" alt="">
+          <img src="https://via.placeholder.com/80" class="border rounded" alt="">
         </div>
-        <div class="border p-3 rounded">
-            <strong>Jane Smith</strong> <span class="text-warning">★★★★★</span>
-            <p>Excellent quality! Highly recommended.</p>
+      </div>
+
+      <!-- Product Info -->
+      <div class="col-md-6">
+        <h2 class="product-title">Product A - Premium Headphones</h2>
+        <p class="text-muted">Category: Electronics</p>
+
+        <div class="mb-3">
+          <span class="price">₹699</span>
+          <span class="old-price">₹999</span>
+          <span class="offer">30% off</span>
         </div>
+
+        <p>High-quality headphones with noise cancellation, 40 hours battery backup, and immersive sound.</p>
+
+        <form class="mb-3">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" id="quantity" class="form-control w-25" value="1" min="1">
+        </form>
+
+        <div class="mb-3">
+          <button class="btn btn-success me-2">Add to Cart</button>
+          <button class="btn btn-buy">Buy Now</button>
+        </div>
+
+        <!-- Delivery check -->
+        <div class="mb-4">
+          <label for="pincode" class="form-label">Check Delivery</label>
+          <div class="input-group w-50">
+            <input type="text" id="pincode" class="form-control" placeholder="Enter Pincode">
+            <button class="btn btn-outline-primary">Check</button>
+          </div>
+        </div>
+
+        <!-- Specs -->
+        <div class="specs">
+          <h5>Specifications</h5>
+          <ul>
+            <li>Bluetooth 5.2 Connectivity</li>
+            <li>40mm Drivers with deep bass</li>
+            <li>Noise Cancellation Enabled</li>
+            <li>40 Hours Battery Backup</li>
+            <li>1 Year Warranty</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>&copy; 2025 MyShop. All rights reserved.</p>
-    </footer>
+  <!-- Reviews -->
+  <div class="container my-5">
+    <h3>Customer Reviews</h3>
+    <div class="border p-3 rounded mb-3">
+      <strong>John Doe</strong>
+      <span class="review-stars">★★★★☆</span>
+      <p>Good product, value for money.</p>
+    </div>
+    <div class="border p-3 rounded">
+      <strong>Jane Smith</strong>
+      <span class="review-stars">★★★★★</span>
+      <p>Excellent quality! Highly recommended.</p>
+    </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Related Products -->
+  <div class="container my-5">
+    <h3>Related Products</h3>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card related-product">
+          <img src="https://via.placeholder.com/200" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h6>Wireless Earbuds</h6>
+            <p class="text-success fw-bold">₹1,499</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card related-product">
+          <img src="https://via.placeholder.com/200" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h6>Smart Watch</h6>
+            <p class="text-success fw-bold">₹2,999</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card related-product">
+          <img src="https://via.placeholder.com/200" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h6>Gaming Mouse</h6>
+            <p class="text-success fw-bold">₹799</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card related-product">
+          <img src="https://via.placeholder.com/200" class="card-img-top" alt="">
+          <div class="card-body text-center">
+            <h6>Laptop Stand</h6>
+            <p class="text-success fw-bold">₹999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
