@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">E-Shop</a>
+            <div>
+                <a href="customer-dashboard.html" class="btn btn-light btn-sm">Dashboard</a>
+                <a href="logout.html" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <div class="container mt-4">
+        <h2 class="mb-4">My Shopping Cart</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Item 1 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/60" class="me-2 rounded" alt="Product">
+                                <span>Smartphone XYZ</span>
+                            </div>
+                        </td>
+                        <td>$500</td>
+                        <td>
+                            <input type="number" class="form-control text-center" value="1" min="1"
+                                style="width: 70px;">
+                        </td>
+                        <td>$500</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Remove</button>
+                        </td>
+                    </tr>
+
+                    <!-- Example Item 2 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/60" class="me-2 rounded" alt="Product">
+                                <span>Wireless Headphones</span>
+                            </div>
+                        </td>
+                        <td>$150</td>
+                        <td>
+                            <input type="number" class="form-control text-center" value="2" min="1"
+                                style="width: 70px;">
+                        </td>
+                        <td>$300</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <a href="products.html" class="btn btn-secondary">Continue Shopping</a>
+            </div>
+            <div class="col-md-6 text-end">
+                <h5>Subtotal: <span class="text-success">$800</span></h5>
+                <h5>Shipping: <span class="text-success">$20</span></h5>
+                <h4>Total: <span class="text-danger">$820</span></h4>
+                <a href="checkout.html" class="btn btn-primary btn-lg mt-2">Proceed to Checkout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Customer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">E-Shop</a>
+            <div>
+                <a href="customer-dashboard.html" class="btn btn-light btn-sm">Dashboard</a>
+                <a href="logout.html" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Orders Section -->
+    <div class="container mt-4">
+        <h2 class="mb-4">My Orders</h2>
+
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Products</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Order Row -->
+                    <tr>
+                        <td>#1001</td>
+                        <td>2025-08-10</td>
+                        <td>
+                            Laptop (1)<br>
+                            Mouse (2)
+                        </td>
+                        <td>$1200</td>
+                        <td><span class="badge bg-warning">Shipped</span></td>
+                        <td><a href="order-details.html" class="btn btn-info btn-sm">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#1002</td>
+                        <td>2025-08-05</td>
+                        <td>
+                            Mobile Phone (1)<br>
+                            Charger (1)
+                        </td>
+                        <td>$800</td>
+                        <td><span class="badge bg-success">Delivered</span></td>
+                        <td><a href="order-details.html" class="btn btn-info btn-sm">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>#1003</td>
+                        <td>2025-08-01</td>
+                        <td>
+                            Headphones (1)
+                        </td>
+                        <td>$150</td>
+                        <td><span class="badge bg-danger">Cancelled</span></td>
+                        <td><a href="order-details.html" class="btn btn-info btn-sm">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - E-Commerce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="customer-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cart.html">Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wishlist.html">Wishlist</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Wishlist Section -->
+    <div class="container my-5">
+        <h2 class="mb-4">My Wishlist</h2>
+
+        <!-- Wishlist Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Stock Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Item 1 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/80" class="me-3" alt="Product Image">
+                                <span>Wireless Headphones</span>
+                            </div>
+                        </td>
+                        <td>$49.99</td>
+                        <td><span class="badge bg-success">In Stock</span></td>
+                        <td>
+                            <a href="cart.html" class="btn btn-sm btn-primary">Add to Cart</a>
+                            <button class="btn btn-sm btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                    <!-- Example Item 2 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/80" class="me-3" alt="Product Image">
+                                <span>Smart Watch</span>
+                            </div>
+                        </td>
+                        <td>$99.99</td>
+                        <td><span class="badge bg-warning text-dark">Limited Stock</span></td>
+                        <td>
+                            <a href="cart.html" class="btn btn-sm btn-primary">Add to Cart</a>
+                            <button class="btn btn-sm btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                    <!-- Example Item 3 -->
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="https://via.placeholder.com/80" class="me-3" alt="Product Image">
+                                <span>Bluetooth Speaker</span>
+                            </div>
+                        </td>
+                        <td>$29.99</td>
+                        <td><span class="badge bg-danger">Out of Stock</span></td>
+                        <td>
+                            <a href="cart.html" class="btn btn-sm btn-secondary disabled">Add to Cart</a>
+                            <button class="btn btn-sm btn-danger">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">&copy; 2025 MyShop. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
