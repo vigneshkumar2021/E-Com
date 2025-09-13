@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop - Furniture | MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-box {
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .product-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-left: 10px;
+    }
+
+    .rating {
+      background: #388e3c;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .offer {
+      color: #388e3c;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-house-door"></i> MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="furniture.html">Furniture</a></li>
+          <li class="nav-item"><a class="nav-link" href="customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Section -->
+  <div class="container my-4">
+    <div class="row">
+
+      <!-- Sidebar Filters -->
+      <div class="col-md-3 mb-4">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5 class="mb-3">Filters</h5>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <h6>Price</h6>
+            <input type="range" class="form-range" min="0" max="100000">
+            <small class="text-muted">Min - Max</small>
+          </div>
+
+          <!-- Brand -->
+          <div class="mb-3" id="brand-filters">
+            <h6>Brand</h6>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="ikea" id="brand-ikea">
+              <label class="form-check-label" for="brand-ikea">Ikea</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="urbanladder" id="brand-urbanladder">
+              <label class="form-check-label" for="brand-urbanladder">Urban Ladder</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="pepperfry" id="brand-pepperfry">
+              <label class="form-check-label" for="brand-pepperfry">Pepperfry</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="godrej" id="brand-godrej">
+              <label class="form-check-label" for="brand-godrej">Godrej Interio</label>
+            </div>
+          </div>
+
+          <!-- Furniture Type -->
+          <div class="mb-3" id="type-filters">
+            <h6>Type</h6>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="sofas" id="type-sofas">
+              <label class="form-check-label" for="type-sofas">Sofas</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="beds" id="type-beds">
+              <label class="form-check-label" for="type-beds">Beds</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="dining" id="type-dining">
+              <label class="form-check-label" for="type-dining">Dining Tables</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="wardrobes" id="type-wardrobes">
+              <label class="form-check-label" for="type-wardrobes">Wardrobes</label>
+            </div>
+          </div>
+
+          <!-- Ratings -->
+          <div class="mb-3">
+            <h6>Customer Ratings</h6>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+
+        <!-- Search + Sort -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <input type="text" id="search-box" class="form-control w-50" placeholder="Search furniture...">
+          <select class="form-select w-25" id="sort-select">
+            <option value="">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+
+        <div id="product-container">
+          <!-- Product 1 -->
+          <div class="product-card" data-brand="ikea" data-type="sofas">
+            <div class="img-box">
+              <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSmO8Z1U8bo9xqQDdODVfug6s3XVYEhLPpsh5CuZcbhY3a5BjB8HdMztdzEtpgNZJ5sFMqAzdNJPM-A5FvFzPnC5tdmrQ70LxttLdQ33IKHTIp9FwXpL8TV-vg" class="product-img" alt="Sofa">
+            </div>
+            <div>
+              <h5>Ikea 3-Seater Sofa</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(2,200 Ratings & 500 Reviews)</small>
+              <p class="mt-2">Comfortable fabric sofa with modern design.</p>
+              <div class="price">₹19,999 <span class="old-price">₹25,999</span> <span class="offer">23% off</span></div>
+              <p class="offer">Free Delivery • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card" data-brand="urbanladder" data-type="beds">
+            <div class="img-box">
+              <img src="https://www.ulcdn.net/opt/www.ulcdn.net/images/products/480955/slide/666x363/Zoey_Non-_Storage_Bed_King_Classic_Walnut_1.jpg?1647675346" class="product-img" alt="Bed">
+            </div>
+            <div>
+              <h5>Urban Ladder King Size Bed</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(1,800 Ratings & 450 Reviews)</small>
+              <p class="mt-2">Sturdy wooden bed frame with storage drawers.</p>
+              <div class="price">₹24,999 <span class="old-price">₹31,999</span> <span class="offer">22% off</span></div>
+              <p class="offer">Free Delivery • EMI Available</p>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card" data-brand="pepperfry" data-type="dining">
+            <div class="img-box">
+              <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTQC0_b2HXfMpBnimkqN3H_E5El6LDiOUu72dBe9dISsAmQgXdvDVSKufMVZX8tE02h9K9TGYqdZm2SSCaMTojOrZZA7IM1J5zR6xlDyqDCQk4ISO8A7adu5A&usqp=CAc" class="product-img" alt="Dining Table">
+            </div>
+            <div>
+              <h5>Pepperfry 6-Seater Dining Table</h5>
+              <span class="rating">4.4 ★</span> <small class="text-muted">(1,500 Ratings & 380 Reviews)</small>
+              <p class="mt-2">Elegant wooden dining table with cushioned chairs.</p>
+              <div class="price">₹17,499 <span class="old-price">₹22,999</span> <span class="offer">24% off</span></div>
+              <p class="offer">Free Delivery • Limited Time Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card" data-brand="godrej" data-type="wardrobes">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/71A3yg9wA0L.jpg" class="product-img" alt="Wardrobe">
+            </div>
+            <div>
+              <h5>Godrej Interio 3-Door Wardrobe</h5>
+              <span class="rating">4.7 ★</span> <small class="text-muted">(2,800 Ratings & 700 Reviews)</small>
+              <p class="mt-2">Spacious wardrobe with mirror and multiple shelves.</p>
+              <div class="price">₹21,999 <span class="old-price">₹28,999</span> <span class="offer">24% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sortSelect = document.getElementById('sort-select');
+      const container = document.getElementById('product-container');
+      const searchBox = document.getElementById('search-box');
+      const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+      const typeCheckboxes = document.querySelectorAll('.type-checkbox');
+
+      let products = Array.from(container.querySelectorAll('.product-card'));
+
+      function extractPrice(priceText) {
+        return parseFloat(priceText.replace(/[₹,]/g, ''));
+      }
+      products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+      function extractRating(ratingText) {
+        return parseFloat(ratingText);
+      }
+
+      function applyFilters() {
+        const searchValue = searchBox.value.toLowerCase();
+        const selectedBrands = Array.from(brandCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+        const selectedTypes = Array.from(typeCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+
+        let filtered = products.filter(card => {
+          const brand = card.dataset.brand;
+          const type = card.dataset.type;
+          const title = card.querySelector('h5').textContent.toLowerCase();
+
+          const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+          const matchesType = selectedTypes.length === 0 || selectedTypes.includes(type);
+          const matchesSearch = title.includes(searchValue);
+
+          return matchesBrand && matchesType && matchesSearch;
+        });
+
+        return filtered;
+      }
+
+      function applySorting(filtered) {
+        const sortBy = sortSelect.value;
+
+        switch (sortBy) {
+          case 'price-low-high':
+            filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+            break;
+          case 'price-high-low':
+            filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+            break;
+          case 'newest':
+            filtered.reverse();
+            break;
+          case 'popularity':
+            filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+            break;
+        }
+
+        return filtered;
+      }
+
+      function render() {
+        let filtered = applyFilters();
+        filtered = applySorting(filtered);
+
+        container.innerHTML = '';
+        filtered.forEach(card => container.appendChild(card));
+      }
+
+      // Events
+      sortSelect.addEventListener('change', render);
+      searchBox.addEventListener('input', render);
+      brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+      typeCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+      render(); // Initial load
+    });
+  </script>
+</body>
+
+</html>

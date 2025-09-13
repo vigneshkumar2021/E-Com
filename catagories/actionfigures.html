@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop - Toys & Action Figures | MyShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #d32f2f;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-left: 10px;
+        }
+
+        .rating {
+            background: #388e3c;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .offer {
+            color: #388e3c;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html"><i class="bi bi-bag"></i> MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="../products.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../customer-cart.html"><i class="bi bi-cart"></i>
+                            Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../login.html"><i class="bi bi-person"></i> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Section -->
+    <div class="container my-4">
+        <div class="row">
+
+            <!-- Sidebar Filters -->
+            <div class="col-md-3 mb-4">
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <h5 class="mb-3">Filters</h5>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <h6>Price</h6>
+                        <input type="range" class="form-range" min="0" max="60000">
+                        <small class="text-muted">Min - Max</small>
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="mb-3" id="brand-filters">
+                        <h6>Brand</h6>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="marvel"
+                                id="brand-marvel">
+                            <label class="form-check-label" for="brand-marvel">Marvel</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="dccomics"
+                                id="brand-dccomics">
+                            <label class="form-check-label" for="brand-dccomics">DC Comics</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="starwars"
+                                id="brand-starwars">
+                            <label class="form-check-label" for="brand-starwars">Star Wars</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="hasbro"
+                                id="brand-hasbro">
+                            <label class="form-check-label" for="brand-hasbro">Hasbro</label>
+                        </div>
+                    </div>
+
+                    <!-- Ratings -->
+                    <div class="mb-3">
+                        <h6>Customer Ratings</h6>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label
+                                class="form-check-label">4★ & above</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label
+                                class="form-check-label">3★ & above</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Listing -->
+            <div class="col-md-9">
+
+                <!-- Search + Sort -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <input type="text" id="search-box" class="form-control w-50"
+                        placeholder="Search toys & action figures...">
+                    <select class="form-select w-25" id="sort-select">
+                        <option value="">Sort by</option>
+                        <option value="price-low-high">Price: Low to High</option>
+                        <option value="price-high-low">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                        <option value="popularity">Popularity</option>
+                    </select>
+                </div>
+
+                <!-- Product Container -->
+                <div id="product-container">
+                    <!-- Product 1 - Iron Man -->
+                    <div class="product-card" data-brand="marvel">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Iron_Man_2013.png/220px-Iron_Man_2013.png"
+                            class="product-img" alt="Iron Man Action Figure">
+                        <div>
+                            <h5>Marvel Iron Man Mark 85 Action Figure (12-inch)</h5>
+                            <span class="rating">4.8 ★</span> <small class="text-muted">(3,142 Ratings & 487
+                                Reviews)</small>
+                            <p class="mt-2">Movie-accurate armor design | 30+ points of articulation | LED light-up
+                                chest</p>
+                            <div class="price">₹4,999 <span class="old-price">₹6,499</span> <span class="offer">23%
+                                    off</span></div>
+                            <p class="offer">Bank Offer • Free Shipping</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 - Batman -->
+                    <div class="product-card" data-brand="dccomics">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Batman_The_Dark_Knight_Rises.png/220px-Batman_The_Dark_Knight_Rises.png"
+                            class="product-img" alt="Batman Action Figure">
+                        <div>
+                            <h5>DC Comics Batman Dark Knight Action Figure (10-inch)</h5>
+                            <span class="rating">4.7 ★</span> <small class="text-muted">(2,876 Ratings & 398
+                                Reviews)</small>
+                            <p class="mt-2">Poseable cape & arms | Includes Batarang & grapple gun | Premium paint
+                                finish</p>
+                            <div class="price">₹3,899 <span class="old-price">₹5,299</span> <span class="offer">26%
+                                    off</span></div>
+                            <p class="offer">Exchange Offer • Bank Discount</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 - Spider-Man -->
+                    <div class="product-card" data-brand="marvel">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/20/Spider-Man_%282017%29.png/220px-Spider-Man_%282017%29.png"
+                            class="product-img" alt="Spider-Man Action Figure">
+                        <div>
+                            <h5>Marvel Spider-Man Homecoming Action Figure (Poseable)</h5>
+                            <span class="rating">4.6 ★</span> <small class="text-muted">(4,215 Ratings & 621
+                                Reviews)</small>
+                            <p class="mt-2">Web-shooting action feature | 15+ articulation points | Movie-inspired suit
+                                design</p>
+                            <div class="price">₹2,999 <span class="old-price">₹3,999</span> <span class="offer">25%
+                                    off</span></div>
+                            <p class="offer">Bank Offer • Free Delivery</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 - Stormtrooper -->
+                    <div class="product-card" data-brand="starwars">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Stormtrooper.jpg/220px-Stormtrooper.jpg"
+                            class="product-img" alt="Stormtrooper Action Figure">
+                        <div>
+                            <h5>Star Wars Stormtrooper Collectible Figure (Limited Edition)</h5>
+                            <span class="rating">4.9 ★</span> <small class="text-muted">(5,321 Ratings & 874
+                                Reviews)</small>
+                            <p class="mt-2">Premium detailing | Blaster accessory included | Officially licensed by
+                                Lucasfilm</p>
+                            <div class="price">₹5,499 <span class="old-price">₹7,499</span> <span class="offer">27%
+                                    off</span></div>
+                            <p class="offer">Free Shipping • Bank Offer</p>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 - Captain America -->
+                    <div class="product-card" data-brand="marvel">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Captain_America_The_First_Avenger.jpg/220px-Captain_America_The_First_Avenger.jpg"
+                            class="product-img" alt="Captain America Action Figure">
+                        <div>
+                            <h5>Marvel Captain America Shield Thrower Action Figure</h5>
+                            <span class="rating">4.5 ★</span> <small class="text-muted">(1,984 Ratings & 276
+                                Reviews)</small>
+                            <p class="mt-2">Spring-loaded shield launcher | Super poseable joints | Inspired by Endgame
+                            </p>
+                            <div class="price">₹3,499 <span class="old-price">₹4,799</span> <span class="offer">27%
+                                    off</span></div>
+                            <p class="offer">Exchange Offer • Free Delivery</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 MyShop. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sortSelect = document.getElementById('sort-select');
+            const container = document.getElementById('product-container');
+            const searchBox = document.getElementById('search-box');
+            const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+
+            // Exit if critical elements are missing
+            if (!sortSelect || !container || !searchBox) return;
+
+            let products = Array.from(container.querySelectorAll('.product-card'));
+
+            function extractPrice(priceText) {
+                return parseFloat(priceText.replace(/[₹,]/g, '')) || 0;
+            }
+
+            function extractRating(ratingText) {
+                const match = ratingText.match(/[\d.]+/);
+                return parseFloat(match ? match[0] : 0) || 0;
+            }
+
+            // Inside your DOMContentLoaded script
+            products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "products.html";
+                });
+            });
+
+            function applyFilters() {
+                const searchValue = searchBox.value.toLowerCase();
+                const selectedBrands = Array.from(brandCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                return products.filter(card => {
+                    const brand = card.dataset.brand;
+                    const title = card.querySelector('h5')?.textContent.toLowerCase() || '';
+
+                    const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+                    const matchesSearch = title.includes(searchValue);
+
+                    return matchesBrand && matchesSearch;
+                });
+            }
+
+            function applySorting(filtered) {
+                const sortBy = sortSelect.value;
+
+                switch (sortBy) {
+                    case 'price-low-high':
+                        filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+                        break;
+                    case 'price-high-low':
+                        filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+                        break;
+                    case 'newest':
+                        filtered.reverse();
+                        break;
+                    case 'popularity':
+                        filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+                        break;
+                }
+
+                return filtered;
+            }
+
+            function render() {
+                let filtered = applyFilters();
+                filtered = applySorting(filtered);
+
+                container.innerHTML = '';
+                filtered.forEach(card => container.appendChild(card));
+            }
+
+            // Attach event listeners
+            sortSelect.addEventListener('change', render);
+            searchBox.addEventListener('input', render);
+            brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+            render(); // Initial render
+        });
+    </script>
+</body>
+
+</html>

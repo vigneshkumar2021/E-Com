@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop - Watches | MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; }
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .product-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .product-img { width: 180px; height: 180px; object-fit: cover; border-radius: 6px; }
+    .price { font-size: 1.3rem; font-weight: 600; color: #d32f2f; }
+    .old-price { text-decoration: line-through; color: #888; margin-left: 10px; }
+    .rating { background:#388e3c; color:#fff; font-size:0.8rem; padding:2px 6px; border-radius:4px; }
+    .offer { color:#388e3c; font-weight:500; font-size:0.9rem; }
+    #noResults { display:none; }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bag"></i> MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="products.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Section -->
+  <div class="container my-4">
+    <div class="row">
+
+      <!-- Sidebar Filters -->
+      <div class="col-md-3 mb-4">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5 class="mb-3">Filters</h5>
+
+          <!-- Brand -->
+          <div class="mb-3">
+            <h6>Brand</h6>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="analog"> <label class="form-check-label">Analog</label></div>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="digital"> <label class="form-check-label">Digital</label></div>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="smart"> <label class="form-check-label">Smart</label></div>
+          </div>
+
+          <!-- Ratings -->
+          <div class="mb-3">
+            <h6>Customer Ratings</h6>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+
+        <!-- Search + Sort -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <input id="searchBox" type="text" class="form-control w-50" placeholder="Search products...">
+          <select id="sortSelect" class="form-select w-25">
+            <option value="default">Sort by</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
+        </div>
+
+        <!-- Products -->
+        <div id="productList">
+
+          <div class="product-card" data-brand="analog" data-price="1799">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.zW1nOeH3GEL_3gfd5aj90wHaHa?pid=Api&P=0&h=180" class="product-img" alt="Leather Strap Watch">
+            <div>
+              <h5>Classic Leather Strap Analog Watch</h5>
+              <span class="rating">4.4 ★</span> <small class="text-muted">(5,210 Ratings & 1,432 Reviews)</small>
+              <p class="mt-2">Premium analog watch with brown leather strap.</p>
+              <div class="price">₹1,799 <span class="old-price">₹3,499</span></div>
+            </div>
+          </div>
+
+          <div class="product-card" data-brand="analog" data-price="2499">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.nA5upEjJaE6BLlhSp0TRkwHaJ4?pid=Api&P=0&h=180" class="product-img" alt="Stainless Steel Watch">
+            <div>
+              <h5>Stainless Steel Analog Watch</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(6,341 Ratings)</small>
+              <p class="mt-2">Elegant stainless-steel analog watch.</p>
+              <div class="price">₹2,499 <span class="old-price">₹4,999</span></div>
+            </div>
+          </div>
+
+          <div class="product-card" data-brand="analog" data-price="5999">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.j7E5HGWXOOYfDdPWTsg3rQHaLB?pid=Api&P=0&h=180" class="product-img" alt="Luxury Gold Watch">
+            <div>
+              <h5>Luxury Gold Plated Watch</h5>
+              <span class="rating">4.8 ★</span> <small class="text-muted">(7,812 Ratings)</small>
+              <p class="mt-2">Premium gold-plated luxury watch.</p>
+              <div class="price">₹5,999 <span class="old-price">₹11,999</span></div>
+            </div>
+          </div>
+
+          <div class="product-card" data-brand="smart" data-price="2999">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.tO9kh8kWiYJ8vKlF_ZJlbQHaIg?pid=Api&P=0&h=180" class="product-img" alt="Sports Smartwatch">
+            <div>
+              <h5>Sports Edition Smartwatch</h5>
+              <span class="rating">4.3 ★</span> <small class="text-muted">(3,214 Ratings)</small>
+              <p class="mt-2">Digital smartwatch with heart-rate monitor.</p>
+              <div class="price">₹2,999 <span class="old-price">₹5,999</span></div>
+            </div>
+          </div>
+
+          <div class="product-card" data-brand="analog" data-price="1499">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.D9hOjhvdNU-MA3tMY_3ORQAAAA?pid=Api&P=0&h=180" class="product-img" alt="Minimalist Dial Watch">
+            <div>
+              <h5>Minimalist Dial Analog Watch</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(4,542 Ratings)</small>
+              <p class="mt-2">Minimalist design with leather strap.</p>
+              <div class="price">₹1,499 <span class="old-price">₹2,999</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <p id="noResults" class="text-center text-muted">No products found.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const searchBox = document.getElementById("searchBox");
+    const sortSelect = document.getElementById("sortSelect");
+    const brandFilters = document.querySelectorAll(".brand-filter");
+    const products = document.querySelectorAll(".product-card");
+    const noResults = document.getElementById("noResults");
+
+    function filterProducts() {
+      const searchText = searchBox.value.toLowerCase();
+      const selectedBrands = Array.from(brandFilters).filter(cb => cb.checked).map(cb => cb.value);
+      let visibleCount = 0;
+
+      products.forEach(p => {
+        const name = p.querySelector("h5").innerText.toLowerCase();
+        const brand = p.getAttribute("data-brand");
+        const matchesSearch = name.includes(searchText);
+        const matchesBrand = selectedBrands.length ? selectedBrands.includes(brand) : true;
+
+        if (matchesSearch && matchesBrand) {
+          p.style.display = "flex";
+          visibleCount++;
+        } else {
+          p.style.display = "none";
+        }
+      });
+
+      noResults.style.display = visibleCount ? "none" : "block";
+    }
+    products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+    function sortProducts() {
+      const sortValue = sortSelect.value;
+      const container = document.getElementById("productList");
+      const sorted = Array.from(products).sort((a, b) => {
+        const priceA = parseInt(a.getAttribute("data-price"));
+        const priceB = parseInt(b.getAttribute("data-price"));
+        if (sortValue === "low-high") return priceA - priceB;
+        if (sortValue === "high-low") return priceB - priceA;
+        return 0;
+      });
+      container.innerHTML = "";
+      sorted.forEach(p => container.appendChild(p));
+    }
+
+    searchBox.addEventListener("input", filterProducts);
+    brandFilters.forEach(cb => cb.addEventListener("change", filterProducts));
+    sortSelect.addEventListener("change", sortProducts);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop - Bike Accessories | MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-box {
+      width: 170px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .product-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-left: 10px;
+    }
+
+    .rating {
+      background: #388e3c;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .offer {
+      color: #388e3c;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bag"></i> MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="bike-accessories.html">Bike Accessories</a></li>
+          <li class="nav-item"><a class="nav-link" href="customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Section -->
+  <div class="container my-4">
+    <div class="row">
+
+      <!-- Sidebar Filters -->
+      <div class="col-md-3 mb-4">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5 class="mb-3">Filters</h5>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <h6>Price</h6>
+            <input type="range" class="form-range" min="0" max="10000">
+            <small class="text-muted">Min - Max</small>
+          </div>
+
+          <!-- Brand -->
+          <div class="mb-3" id="brand-filters">
+            <h6>Brand</h6>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="studds" id="brand-studds">
+              <label class="form-check-label" for="brand-studds">Studds</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="steelbird" id="brand-steelbird">
+              <label class="form-check-label" for="brand-steelbird">Steelbird</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="motul" id="brand-motul">
+              <label class="form-check-label" for="brand-motul">Motul</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="royal-enfield" id="brand-royal-enfield">
+              <label class="form-check-label" for="brand-royal-enfield">Royal Enfield</label>
+            </div>
+          </div>
+
+          <!-- Type -->
+          <div class="mb-3" id="type-filters">
+            <h6>Accessory Type</h6>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="helmets" id="type-helmets">
+              <label class="form-check-label" for="type-helmets">Helmets</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="gloves" id="type-gloves">
+              <label class="form-check-label" for="type-gloves">Gloves</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="jackets" id="type-jackets">
+              <label class="form-check-label" for="type-jackets">Riding Jackets</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="oil" id="type-oil">
+              <label class="form-check-label" for="type-oil">Engine Oil</label>
+            </div>
+          </div>
+
+          <!-- Ratings -->
+          <div class="mb-3">
+            <h6>Customer Ratings</h6>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+
+        <!-- Search + Sort -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <input type="text" id="search-box" class="form-control w-50" placeholder="Search bike accessories...">
+          <select class="form-select w-25" id="sort-select">
+            <option value="">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+
+        <!-- Product Container -->
+        <div id="product-container">
+          <!-- Product 1 -->
+          <div class="product-card" data-brand="studds" data-type="helmets">
+            <div class="img-box">
+              <img src="https://www.studds.com/Adminpanel/uploads/MATT-BLUE-N1.png" class="product-img" alt="Helmet">
+            </div>
+            <div>
+              <h5>Studds Professional Helmet</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(3,200 Ratings & 800 Reviews)</small>
+              <p class="mt-2">ISI Certified | Strong & Durable</p>
+              <div class="price">₹1,299 <span class="old-price">₹1,799</span> <span class="offer">28% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card" data-brand="royal-enfield" data-type="gloves">
+            <div class="img-box">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTssIpaWKqcbXaEE1Mjug6frIm3IgaJCe28YA&s" class="product-img" alt="Gloves">
+            </div>
+            <div>
+              <h5>Royal Enfield Riding Gloves</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(1,400 Ratings & 300 Reviews)</small>
+              <p class="mt-2">Comfort Grip | Breathable Material</p>
+              <div class="price">₹1,199 <span class="old-price">₹1,699</span> <span class="offer">30% off</span></div>
+              <p class="offer">Free Shipping • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card" data-brand="rynox" data-type="jackets">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/71SpKY6AvAL.jpg" class="product-img" alt="Jacket">
+            </div>
+            <div>
+              <h5>Rynox Riding Jacket</h5>
+              <span class="rating">4.7 ★</span> <small class="text-muted">(950 Ratings & 220 Reviews)</small>
+              <p class="mt-2">Protective Armor | Waterproof | Stylish</p>
+              <div class="price">₹6,999 <span class="old-price">₹8,499</span> <span class="offer">18% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card" data-brand="motul" data-type="oil">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/715iaC3JR7L.UF1000,1000_QL80.jpg" class="product-img" alt="Engine Oil">
+            </div>
+            <div>
+              <h5>Motul 7100 4T Engine Oil</h5>
+              <span class="rating">4.8 ★</span> <small class="text-muted">(2,100 Ratings & 500 Reviews)</small>
+              <p class="mt-2">Synthetic Oil | Long-lasting Engine Life</p>
+              <div class="price">₹899 <span class="old-price">₹1,199</span> <span class="offer">25% off</span></div>
+              <p class="offer">Free Delivery • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 5 - Additional Product -->
+          <div class="product-card" data-brand="steelbird" data-type="helmets">
+            <div class="img-box">
+              <img src="https://www.steelbirdhelmets.com/wp-content/uploads/2022/07/SBH-17-Royal-Glossy-Black-1.png" class="product-img" alt="Steelbird Helmet">
+            </div>
+            <div>
+              <h5>Steelbird SBH-17 Full Face Helmet</h5>
+              <span class="rating">4.4 ★</span> <small class="text-muted">(1,850 Ratings & 420 Reviews)</small>
+              <p class="mt-2">Aerodynamic Design | Anti-Scratch Visor</p>
+              <div class="price">₹2,499 <span class="old-price">₹3,299</span> <span class="offer">24% off</span></div>
+              <p class="offer">Free Shipping • Cashback Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 6 - Additional Product -->
+          <div class="product-card" data-brand="royal-enfield" data-type="jackets">
+            <div class="img-box">
+              <img src="https://www.royalenfield.com/content/dam/royal-enfield/india/riding-gear/apparel/riding-jackets/motorcycle-jacket-men-leather-tan-black-980100023-01.png" class="product-img" alt="Royal Enfield Jacket">
+            </div>
+            <div>
+              <h5>Royal Enfield Classic Leather Jacket</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(1,200 Ratings & 280 Reviews)</small>
+              <p class="mt-2">Genuine Leather | Classic Design | CE Certified</p>
+              <div class="price">₹12,999 <span class="old-price">₹15,999</span> <span class="offer">19% off</span></div>
+              <p class="offer">Free Delivery • Extended Warranty</p>
+            </div>
+          </div>
+
+          <!-- Product 7 - Additional Product -->
+          <div class="product-card" data-brand="studds" data-type="gloves">
+            <div class="img-box">
+              <img src="https://www.studds.com/Adminpanel/uploads/STUDDS-ROGUE-GLOVES-BLACK.png" class="product-img" alt="Studds Gloves">
+            </div>
+            <div>
+              <h5>Studds Rogue Riding Gloves</h5>
+              <span class="rating">4.3 ★</span> <small class="text-muted">(980 Ratings & 210 Reviews)</small>
+              <p class="mt-2">Knuckle Protection | Touchscreen Compatible</p>
+              <div class="price">₹799 <span class="old-price">₹1,199</span> <span class="offer">33% off</span></div>
+              <p class="offer">Bank Discount • Free Delivery</p>
+            </div>
+          </div>
+
+          <!-- Product 8 - Additional Product -->
+          <div class="product-card" data-brand="motul" data-type="oil">
+            <div class="img-box">
+              <img src="https://www.motul.com/sites/default/files/styles/product_full/public/2022-09/3100-4t-10w40-1l.png?itok=4nQJ7XqU" class="product-img" alt="Motul Oil">
+            </div>
+            <div>
+              <h5>Motul 3100 4T Engine Oil</h5>
+              <span class="rating">4.7 ★</span> <small class="text-muted">(1,750 Ratings & 390 Reviews)</small>
+              <p class="mt-2">Semi-Synthetic | 10W-40 Grade | 1L Bottle</p>
+              <div class="price">₹649 <span class="old-price">₹899</span> <span class="offer">28% off</span></div>
+              <p class="offer">Free Delivery • Combo Offer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sortSelect = document.getElementById('sort-select');
+    const container = document.getElementById('product-container');
+    const searchBox = document.getElementById('search-box');
+    const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+    const typeCheckboxes = document.querySelectorAll('.type-checkbox');
+
+    let products = Array.from(container.querySelectorAll('.product-card'));
+    products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+    function extractPrice(priceText) {
+      return parseFloat(priceText.replace(/[₹,]/g, ''));
+    }
+
+    function extractRating(ratingText) {
+      return parseFloat(ratingText);
+    }
+
+    function applyFilters() {
+      const searchValue = searchBox.value.toLowerCase();
+      const selectedBrands = Array.from(brandCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+      
+      const selectedTypes = Array.from(typeCheckboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      let filtered = products.filter(card => {
+        const brand = card.dataset.brand;
+        const type = card.dataset.type;
+        const title = card.querySelector('h5').textContent.toLowerCase();
+
+        const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+        const matchesType = selectedTypes.length === 0 || selectedTypes.includes(type);
+        const matchesSearch = title.includes(searchValue);
+
+        return matchesBrand && matchesType && matchesSearch;
+      });
+
+      return filtered;
+    }
+
+    function applySorting(filtered) {
+      const sortBy = sortSelect.value;
+
+      switch (sortBy) {
+        case 'price-low-high':
+          filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+          break;
+        case 'price-high-low':
+          filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+          break;
+        case 'newest':
+          filtered.reverse();
+          break;
+        case 'popularity':
+          filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+          break;
+      }
+
+      return filtered;
+    }
+
+    function render() {
+      let filtered = applyFilters();
+      filtered = applySorting(filtered);
+
+      container.innerHTML = '';
+      filtered.forEach(card => container.appendChild(card));
+    }
+
+    // Events
+    sortSelect.addEventListener('change', render);
+    searchBox.addEventListener('input', render);
+    brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+    typeCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+    render(); // Initial load
+  });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop - Beverages | MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-box {
+      width: 170px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .product-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-left: 10px;
+    }
+
+    .rating {
+      background: #388e3c;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .offer {
+      color: #388e3c;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="../index.html"><i class="bi bi-bag"></i> MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="../products.html">shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="../customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="../login.html"><i class="bi bi-person"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Section -->
+  <div class="container my-4">
+    <div class="row">
+
+      <!-- Sidebar Filters -->
+      <div class="col-md-3 mb-4">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5 class="mb-3">Filters</h5>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <h6>Price</h6>
+            <input type="range" class="form-range" min="0" max="2000">
+            <small class="text-muted">Min - Max</small>
+          </div>
+
+          <!-- Brand -->
+          <div class="mb-3" id="brand-filters">
+            <h6>Brand</h6>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="cocacola" id="brand-cocacola">
+              <label class="form-check-label" for="brand-cocacola">Coca Cola</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="pepsi" id="brand-pepsi">
+              <label class="form-check-label" for="brand-pepsi">Pepsi</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="tropicana" id="brand-tropicana">
+              <label class="form-check-label" for="brand-tropicana">Tropicana</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="nescafe" id="brand-nescafe">
+              <label class="form-check-label" for="brand-nescafe">Nescafé</label>
+            </div>
+          </div>
+
+          <!-- Type -->
+          <div class="mb-3" id="type-filters">
+            <h6>Beverage Type</h6>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="softdrinks" id="type-softdrinks">
+              <label class="form-check-label" for="type-softdrinks">Soft Drinks</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="juices" id="type-juices">
+              <label class="form-check-label" for="type-juices">Juices</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="tea" id="type-tea">
+              <label class="form-check-label" for="type-tea">Tea</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input type-checkbox" type="checkbox" value="coffee" id="type-coffee">
+              <label class="form-check-label" for="type-coffee">Coffee</label>
+            </div>
+          </div>
+
+          <!-- Ratings -->
+          <div class="mb-3">
+            <h6>Customer Ratings</h6>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+
+        <!-- Search + Sort -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <input type="text" id="search-box" class="form-control w-50" placeholder="Search beverages...">
+          <select class="form-select w-25" id="sort-select">
+            <option value="">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+
+        <div id="product-container" class="product-container">
+          <!-- Product 1 -->
+          <div class="product-card" data-brand="cocacola" data-type="softdrinks">
+            <div class="img-box">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR--IDjrO4Ypz7clbOThNWjxffCcF0d5pZcGw&s" class="product-img" alt="Coca Cola">
+            </div>
+            <div>
+              <h5>Coca Cola Soft Drink (2L)</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(10,200 Ratings & 3,500 Reviews)</small>
+              <p class="mt-2">Refreshing Carbonated Beverage</p>
+              <div class="price">₹95 <span class="old-price">₹110</span> <span class="offer">14% off</span></div>
+              <p class="offer">Free Delivery • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card" data-brand="tropicana" data-type="juices">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/71ZNcuBUV5L._UF1000,1000_QL80_.jpg" class="product-img" alt="Tropicana Juice">
+            </div>
+            <div>
+              <h5>Tropicana Orange Juice (1L)</h5>
+              <span class="rating">4.7 ★</span> <small class="text-muted">(7,800 Ratings & 2,200 Reviews)</small>
+              <p class="mt-2">100% Natural Fruit Juice</p>
+              <div class="price">₹120 <span class="old-price">₹150</span> <span class="offer">20% off</span></div>
+              <p class="offer">Free Delivery • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card" data-brand="nescafe" data-type="coffee">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/71q4SSQBWaL.jpg" class="product-img" alt="Nescafe Coffee">
+            </div>
+            <div>
+              <h5>Nescafé Classic Coffee (200g)</h5>
+              <span class="rating">4.8 ★</span> <small class="text-muted">(12,500 Ratings & 4,000 Reviews)</small>
+              <p class="mt-2">Rich Aroma & Taste</p>
+              <div class="price">₹320 <span class="old-price">₹360</span> <span class="offer">11% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card" data-brand="tata" data-type="tea">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/61F0-QIYtlL.jpg" class="product-img" alt="Tata Tea Premium">
+            </div>
+            <div>
+              <h5>Tata Tea Premium (1kg)</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(6,400 Ratings & 1,800 Reviews)</small>
+              <p class="mt-2">Strong & Flavourful Tea</p>
+              <div class="price">₹480 <span class="old-price">₹520</span> <span class="offer">8% off</span></div>
+              <p class="offer">Free Delivery • Bank Offer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sortSelect = document.getElementById('sort-select');
+      const container = document.getElementById('product-container');
+      const searchBox = document.getElementById('search-box');
+      const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+      const typeCheckboxes = document.querySelectorAll('.type-checkbox');
+
+      // If any critical element is missing, exit
+      if (!sortSelect || !container || !searchBox) return;
+
+      let products = Array.from(container.querySelectorAll('.product-card'));
+
+      function extractPrice(priceText) {
+        return parseFloat(priceText.replace(/[₹,]/g, '')) || 0;
+      }
+
+      function extractRating(ratingText) {
+        const match = ratingText.match(/[\d.]+/);
+        return parseFloat(match ? match[0] : 0) || 0;
+      }
+      products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+      function applyFilters() {
+        const searchValue = searchBox.value.toLowerCase();
+        const selectedBrands = Array.from(brandCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+        const selectedTypes = Array.from(typeCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+
+        return products.filter(card => {
+          const brand = card.dataset.brand;
+          const type = card.dataset.type;
+          const title = card.querySelector('h5')?.textContent.toLowerCase() || '';
+
+          const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+          const matchesType = selectedTypes.length === 0 || selectedTypes.includes(type);
+          const matchesSearch = title.includes(searchValue);
+
+          return matchesBrand && matchesType && matchesSearch;
+        });
+      }
+
+      function applySorting(filtered) {
+        const sortBy = sortSelect.value;
+
+        switch (sortBy) {
+          case 'price-low-high':
+            filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+            break;
+          case 'price-high-low':
+            filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+            break;
+          case 'newest':
+            filtered.reverse();
+            break;
+          case 'popularity':
+            filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+            break;
+        }
+
+        return filtered;
+      }
+
+      function render() {
+        let filtered = applyFilters();
+        filtered = applySorting(filtered);
+
+        container.innerHTML = '';
+        filtered.forEach(card => container.appendChild(card));
+      }
+
+      // Attach event listeners
+      sortSelect.addEventListener('change', render);
+      searchBox.addEventListener('input', render);
+      brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+      typeCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+      render(); // Initial render
+    });
+  </script>
+</body>
+
+</html>

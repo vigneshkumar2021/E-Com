@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -97,12 +96,24 @@
           </div>
 
           <!-- Brand -->
-          <div class="mb-3">
+          <div class="mb-3" id="brand-filters">
             <h6>Brand</h6>
-            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Levi’s</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Nike</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Adidas</label></div>
-            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">U.S. Polo</label></div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="levis" id="brand-levis">
+              <label class="form-check-label" for="brand-levis">Levi's</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="nike" id="brand-nike">
+              <label class="form-check-label" for="brand-nike">Nike</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="adidas" id="brand-adidas">
+              <label class="form-check-label" for="brand-adidas">Adidas</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="uspolo" id="brand-uspolo">
+              <label class="form-check-label" for="brand-uspolo">U.S. Polo</label>
+            </div>
           </div>
 
           <!-- Ratings -->
@@ -119,19 +130,21 @@
 
         <!-- Search + Sort -->
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <input type="text" class="form-control w-50" placeholder="Search products...">
-          <select class="form-select w-25">
-            <option>Sort by</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Newest</option>
-            <option>Popularity</option>
+          <input type="text" id="search-box" class="form-control w-50" placeholder="Search products...">
+          <select class="form-select w-25" id="sort-select">
+            <option value="">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popularity">Popularity</option>
           </select>
         </div>
 
-        <div>
-          <!-- Product 1 - Levi's Jeans -->
-          <div class="product-card d-flex">
+        <!-- Product Container -->
+        <div id="product-container">
+
+          <!-- Product 1 -->
+          <div class="product-card d-flex" data-brand="levis">
             <img src="https://resources.mandmdirect.com/Images/_default/l/v/3/lv32938_1_cloudzoom.jpg" class="product-img me-3" alt="Levi's Jeans">
             <div>
               <h5>Levi’s Men Slim Fit Jeans</h5>
@@ -142,8 +155,8 @@
             </div>
           </div>
 
-          <!-- Product 2 - Nike T-Shirt -->
-          <div class="product-card d-flex">
+          <!-- Product 2 -->
+          <div class="product-card d-flex" data-brand="nike">
             <img src="https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/u0btvcvg2nejhaydjwmm/AS+M+NSW+TEE+ICON+FUTURA.png" class="product-img me-3" alt="Nike T-Shirt">
             <div>
               <h5>Nike Men’s Sports T-Shirt</h5>
@@ -154,8 +167,8 @@
             </div>
           </div>
 
-          <!-- Product 3 - Adidas Sneakers -->
-          <div class="product-card d-flex">
+          <!-- Product 3 -->
+          <div class="product-card d-flex" data-brand="adidas">
             <img src="https://img.tatacliq.com/images/i19//437Wx649H/MP000000023553501_437Wx649H_202409060452201.jpeg" class="product-img me-3" alt="Adidas Sneakers">
             <div>
               <h5>Adidas Men’s Running Sneakers</h5>
@@ -166,8 +179,8 @@
             </div>
           </div>
 
-          <!-- Product 4 - U.S. Polo Shirt -->
-          <div class="product-card d-flex">
+          <!-- Product 4 -->
+          <div class="product-card d-flex" data-brand="uspolo">
             <img src="https://uspoloassn.in/cdn/shop/files/2_268b23e1-60c8-4883-9777-b670449781ea.jpg" class="product-img me-3" alt="U.S. Polo Shirt">
             <div>
               <h5>U.S. Polo Assn. Polo Collar Shirt</h5>
@@ -188,7 +201,96 @@
     <p>&copy; 2025 MyShop. All rights reserved.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  <script >document.addEventListener('DOMContentLoaded', function () {
+  const sortSelect = document.getElementById('sort-select');
+  const container = document.getElementById('product-container');
+  const searchBox = document.getElementById('search-box');
+  const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
 
+  let products = Array.from(container.querySelectorAll('.product-card'));
+
+  function extractPrice(priceText) {
+    return parseFloat(priceText.replace(/[₹,]/g, ''));
+  }
+
+  function extractRating(ratingText) {
+    return parseFloat(ratingText);
+  }
+
+  function applyFilters() {
+    const searchValue = searchBox.value.toLowerCase();
+    const selectedBrands = Array.from(brandCheckboxes)
+      .filter(cb => cb.checked)
+      .map(cb => cb.value);
+
+    let filtered = products.filter(card => {
+      const brand = card.dataset.brand;
+      const title = card.querySelector('h5').textContent.toLowerCase();
+
+      const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+      const matchesSearch = title.includes(searchValue);
+
+      return matchesBrand && matchesSearch;
+    });
+
+    return filtered;
+  }
+
+  products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+  function applySorting(filtered) {
+    const sortBy = sortSelect.value;
+
+    switch (sortBy) {
+      case 'price-low-high':
+        filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+        break;
+      case 'price-high-low':
+        filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+        break;
+      case 'newest':
+        filtered.reverse();
+        break;
+      case 'popularity':
+        filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+        break;
+    }
+
+    return filtered;
+  }
+
+  function render() {
+    let filtered = applyFilters();
+    filtered = applySorting(filtered);
+
+    container.innerHTML = '';
+    filtered.forEach(card => container.appendChild(card));
+  }
+
+  // Events
+  sortSelect.addEventListener('change', render);
+  searchBox.addEventListener('input', render);
+  brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+  render(); // Initial load
+});
+</script>
+</body>
 </html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop - Makeup | MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .img-box {
+      width: 160px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .product-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-left: 10px;
+    }
+
+    .rating {
+      background: #388e3c;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .offer {
+      color: #388e3c;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bag"></i> MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="makeup-wear.html">Makeup</a></li>
+          <li class="nav-item"><a class="nav-link" href="customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Section -->
+  <div class="container my-4">
+    <div class="row">
+
+      <!-- Sidebar Filters -->
+      <div class="col-md-3 mb-4">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5 class="mb-3">Filters</h5>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <h6>Price</h6>
+            <input type="range" class="form-range" min="0" max="5000">
+            <small class="text-muted">Min - Max</small>
+          </div>
+
+          <!-- Brand -->
+          <div class="mb-3">
+            <h6>Brand</h6>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="Lakme"> <label class="form-check-label">Lakme</label></div>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="Maybelline"> <label class="form-check-label">Maybelline</label></div>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="L'Oréal"> <label class="form-check-label">L'Oréal</label></div>
+            <div class="form-check"><input class="form-check-input brand-filter" type="checkbox" value="MAC"> <label class="form-check-label">MAC</label></div>
+          </div>
+
+          <!-- Category -->
+          <div class="mb-3">
+            <h6>Category</h6>
+            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Lipstick</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Foundation</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Eyeliner</label></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox"> <label class="form-check-label">Compact</label></div>
+          </div>
+
+          <!-- Ratings -->
+          <div class="mb-3">
+            <h6>Customer Ratings</h6>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+
+        <!-- Search + Sort -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <input type="text" id="searchInput" class="form-control w-50" placeholder="Search makeup products...">
+          <select id="sortSelect" class="form-select w-25">
+            <option value="">Sort by</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+
+        <div id="productList">
+          <!-- Product 1 - Lakme -->
+          <div class="product-card" data-name="Lakme Matte Lipstick" data-brand="Lakme" data-price="399" data-popularity="2300" data-date="20250101">
+            <div class="img-box">
+              <img src="https://www.lakmeindia.com/cdn/shop/files/24555_H_8901030759604_1000x.jpg?v=1698987290" class="product-img" alt="Lakme Lipstick">
+            </div>
+            <div>
+              <h5>Lakme Matte Lipstick</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(2,300 Ratings & 520 Reviews)</small>
+              <p class="mt-2">Long Lasting | Matte Finish | Multiple Shades</p>
+              <div class="price">₹399 <span class="old-price">₹599</span> <span class="offer">33% off</span></div>
+              <p class="offer">Free Delivery • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 2 - Maybelline -->
+          <div class="product-card" data-name="Maybelline Fit Me Foundation" data-brand="Maybelline" data-price="549" data-popularity="4100" data-date="20250201">
+            <div class="img-box">
+              <img src="https://images-cdn.ubuy.co.in/65218f2f5fcd4d53bb7b8299-maybelline-fit-me-dewy-smooth-liquid.jpg" class="product-img" alt="Maybelline Foundation">
+            </div>
+            <div>
+              <h5>Maybelline Fit Me Foundation</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(4,100 Ratings & 850 Reviews)</small>
+              <p class="mt-2">Natural Finish | Lightweight | Oil Control</p>
+              <div class="price">₹549 <span class="old-price">₹799</span> <span class="offer">31% off</span></div>
+              <p class="offer">Bank Discount • Free Delivery</p>
+            </div>
+          </div>
+
+          <!-- Product 3 - L'Oréal -->
+          <div class="product-card" data-name="L'Oréal Paris Eyeliner" data-brand="L'Oréal" data-price="699" data-popularity="3020" data-date="20250301">
+            <div class="img-box">
+              <img src="https://m.media-amazon.com/images/I/31K0n4Di4LL.jpg" class="product-img" alt="Loreal Eyeliner">
+            </div>
+            <div>
+              <h5>L'Oréal Paris Eyeliner</h5>
+              <span class="rating">4.7 ★</span> <small class="text-muted">(3,020 Ratings & 600 Reviews)</small>
+              <p class="mt-2">Waterproof | Smudge Proof | Bold Black</p>
+              <div class="price">₹699 <span class="old-price">₹999</span> <span class="offer">30% off</span></div>
+              <p class="offer">Free Shipping • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 4 - MAC -->
+          <div class="product-card" data-name="MAC Studio Fix Compact" data-brand="MAC" data-price="2999" data-popularity="1890" data-date="20250401">
+            <div class="img-box">
+              <img src="https://m.maccosmetics.in/media/export/cms/products/640x600/mac_sku_M6JC01_640x600_0.jpg" class="product-img" alt="MAC Compact">
+            </div>
+            <div>
+              <h5>MAC Studio Fix Compact</h5>
+              <span class="rating">4.8 ★</span> <small class="text-muted">(1,890 Ratings & 420 Reviews)</small>
+              <p class="mt-2">Professional Finish | Long Wear | Premium Quality</p>
+              <div class="price">₹2,999 <span class="old-price">₹3,799</span> <span class="offer">21% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const sortSelect = document.getElementById("sortSelect");
+    const brandFilters = document.querySelectorAll(".brand-filter");
+    const productList = document.getElementById("productList");
+    const products = Array.from(productList.getElementsByClassName("product-card"));
+
+    function filterProducts() {
+      const searchText = searchInput.value.toLowerCase();
+      const selectedBrands = Array.from(brandFilters).filter(cb => cb.checked).map(cb => cb.value);
+
+      products.forEach(product => {
+        const name = product.dataset.name.toLowerCase();
+        const brand = product.dataset.brand;
+        const matchesSearch = name.includes(searchText);
+        const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+
+        if (matchesSearch && matchesBrand) {
+          product.style.display = "flex";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+
+    products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+    function sortProducts() {
+      let sortedProducts = [...products];
+      const sortValue = sortSelect.value;
+
+      if (sortValue === "low-high") {
+        sortedProducts.sort((a, b) => a.dataset.price - b.dataset.price);
+      } else if (sortValue === "high-low") {
+        sortedProducts.sort((a, b) => b.dataset.price - a.dataset.price);
+      } else if (sortValue === "popularity") {
+        sortedProducts.sort((a, b) => b.dataset.popularity - a.dataset.popularity);
+      } else if (sortValue === "newest") {
+        sortedProducts.sort((a, b) => b.dataset.date - a.dataset.date);
+      }
+
+      sortedProducts.forEach(p => productList.appendChild(p));
+    }
+
+    searchInput.addEventListener("input", filterProducts);
+    brandFilters.forEach(cb => cb.addEventListener("change", filterProducts));
+    sortSelect.addEventListener("change", sortProducts);
+  </script>
+</body>
+</html>

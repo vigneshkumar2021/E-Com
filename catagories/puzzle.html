@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop - Puzzles & Games | MyShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #d32f2f;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-left: 10px;
+        }
+
+        .rating {
+            background: #388e3c;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .offer {
+            color: #388e3c;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bag"></i> MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="products.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person"></i> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Section -->
+    <div class="container my-4">
+        <div class="row">
+
+            <!-- Sidebar Filters -->
+            <div class="col-md-3 mb-4">
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <h5 class="mb-3">Filters</h5>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <h6>Price</h6>
+                        <input type="range" class="form-range" min="0" max="60000">
+                        <small class="text-muted">Min - Max</small>
+                    </div>
+
+                    <!-- Puzzle Type -->
+                    <div class="mb-3" id="brand-filters">
+                        <h6>Puzzle Type</h6>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="rubik" id="brand-rubik">
+                            <label class="form-check-label" for="brand-rubik">Rubik's Cube</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="sudoku" id="brand-sudoku">
+                            <label class="form-check-label" for="brand-sudoku">Sudoku</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="crossword" id="brand-crossword">
+                            <label class="form-check-label" for="brand-crossword">Crossword</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="jigsaw" id="brand-jigsaw">
+                            <label class="form-check-label" for="brand-jigsaw">Jigsaw Puzzles</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="brainteaser" id="brand-brainteaser">
+                            <label class="form-check-label" for="brand-brainteaser">Brain Teasers</label>
+                        </div>
+                    </div>
+
+                    <!-- Ratings -->
+                    <div class="mb-3">
+                        <h6>Customer Ratings</h6>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Listing -->
+            <div class="col-md-9">
+
+                <!-- Search + Sort -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <input type="text" id="search-box" class="form-control w-50" placeholder="Search puzzles & games...">
+                    <select class="form-select w-25" id="sort-select">
+                        <option value="">Sort by</option>
+                        <option value="price-low-high">Price: Low to High</option>
+                        <option value="price-high-low">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                        <option value="popularity">Popularity</option>
+                    </select>
+                </div>
+
+                <div id="product-container">
+                    <!-- Product Row 1 - Jigsaw Puzzle -->
+                    <div class="product-card" data-brand="jigsaw">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.Qy3KUraYrgt9YGKhONa9uQHaJ3?pid=Api&P=0&h=180"
+                             class="product-img" alt="Jigsaw Puzzle">
+                        <div>
+                            <h5>1000-Piece Jigsaw Puzzle (Landscape Edition)</h5>
+                            <span class="rating">4.7 ★</span> <small class="text-muted">(3,245 Ratings & 534 Reviews)</small>
+                            <p class="mt-2">Relaxing and challenging puzzle for adults and kids. High-quality thick cardboard pieces.</p>
+                            <div class="price">₹899 <span class="old-price">₹1,299</span> <span class="offer">31% off</span></div>
+                            <p class="offer">Free Delivery • Bank Offer</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 2 - Rubik's Cube -->
+                    <div class="product-card" data-brand="rubik">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.9f4rq6yYJbQcIzPyZnuAZwHaHa?pid=Api&P=0&h=180"
+                             class="product-img" alt="Rubik's Cube">
+                        <div>
+                            <h5>Original Rubik’s Cube 3x3</h5>
+                            <span class="rating">4.8 ★</span> <small class="text-muted">(5,623 Ratings & 921 Reviews)</small>
+                            <p class="mt-2">World’s most popular puzzle toy. Build logic and speed with the authentic Rubik’s Cube.</p>
+                            <div class="price">₹399 <span class="old-price">₹599</span> <span class="offer">33% off</span></div>
+                            <p class="offer">Bank Discount • Free Shipping</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 3 - Sudoku Puzzle Book -->
+                    <div class="product-card" data-brand="sudoku">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.Z4xzo-zLDcQsGB0xwpZRfwHaEC?pid=Api&P=0&h=180"
+                             class="product-img" alt="Sudoku Puzzle Book">
+                        <div>
+                            <h5>Sudoku Puzzle Book (500+ Puzzles)</h5>
+                            <span class="rating">4.6 ★</span> <small class="text-muted">(1,932 Ratings & 276 Reviews)</small>
+                            <p class="mt-2">Test your brain with hundreds of Sudoku puzzles, from easy to expert difficulty.</p>
+                            <div class="price">₹299 <span class="old-price">₹449</span> <span class="offer">34% off</span></div>
+                            <p class="offer">Free Delivery • Upto 10% Bank Offer</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 4 - Wooden Brain Teaser -->
+                    <div class="product-card" data-brand="brainteaser">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.xaFFh8MpmWrw3JL-xEMsNQHaGz?pid=Api&P=0&h=180"
+                             class="product-img" alt="Wooden Brain Teaser Puzzle">
+                        <div>
+                            <h5>Wooden Brain Teaser Puzzle (Interlocking Blocks)</h5>
+                            <span class="rating">4.5 ★</span> <small class="text-muted">(1,245 Ratings & 188 Reviews)</small>
+                            <p class="mt-2">Handcrafted wooden brain teaser that challenges logic and patience. Great gift item.</p>
+                            <div class="price">₹749 <span class="old-price">₹999</span> <span class="offer">25% off</span></div>
+                            <p class="offer">Free Delivery • Bank Offer</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 5 - Crossword Puzzle Book -->
+                    <div class="product-card" data-brand="crossword">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.oMOoguq_hAkYT8Kpby7HjQHaE8?pid=Api&P=0&h=180"
+                             class="product-img" alt="Crossword Puzzle Book">
+                        <div>
+                            <h5>Crossword Puzzle Book (200+ Word Puzzles)</h5>
+                            <span class="rating">4.4 ★</span> <small class="text-muted">(876 Ratings & 142 Reviews)</small>
+                            <p class="mt-2">Sharpen your vocabulary and memory with fun crossword challenges.</p>
+                            <div class="price">₹349 <span class="old-price">₹499</span> <span class="offer">30% off</span></div>
+                            <p class="offer">Bank Offer • Free Shipping</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 MyShop. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sortSelect = document.getElementById('sort-select');
+            const container = document.getElementById('product-container');
+            const searchBox = document.getElementById('search-box');
+            const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+
+            // Exit if critical elements are missing
+            if (!sortSelect || !container || !searchBox) return;
+
+            let products = Array.from(container.querySelectorAll('.product-card'));
+
+            function extractPrice(priceText) {
+                return parseFloat(priceText.replace(/[₹,]/g, '')) || 0;
+            }
+
+            function extractRating(ratingText) {
+                const match = ratingText.match(/[\d.]+/);
+                return parseFloat(match ? match[0] : 0) || 0;
+            }
+            products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+            function applyFilters() {
+                const searchValue = searchBox.value.toLowerCase();
+                const selectedBrands = Array.from(brandCheckboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                return products.filter(card => {
+                    const brand = card.dataset.brand;
+                    const title = card.querySelector('h5')?.textContent.toLowerCase() || '';
+
+                    const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+                    const matchesSearch = title.includes(searchValue);
+
+                    return matchesBrand && matchesSearch;
+                });
+            }
+
+            function applySorting(filtered) {
+                const sortBy = sortSelect.value;
+
+                switch (sortBy) {
+                    case 'price-low-high':
+                        filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+                        break;
+                    case 'price-high-low':
+                        filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+                        break;
+                    case 'newest':
+                        filtered.reverse();
+                        break;
+                    case 'popularity':
+                        filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+                        break;
+                }
+
+                return filtered;
+            }
+
+            function render() {
+                let filtered = applyFilters();
+                filtered = applySorting(filtered);
+
+                container.innerHTML = '';
+                filtered.forEach(card => container.appendChild(card));
+            }
+
+            // Attach event listeners
+            sortSelect.addEventListener('change', render);
+            searchBox.addEventListener('input', render);
+            brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+            render(); // Initial render
+        });
+    </script>
+</body>
+
+</html>

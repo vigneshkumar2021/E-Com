@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop - Car Accessories | MyShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #d32f2f;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      margin-left: 10px;
+    }
+
+    .rating {
+      background: #388e3c;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .offer {
+      color: #388e3c;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bag"></i> MyShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-cart"></i> Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person"></i> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Shop Section -->
+  <div class="container my-4">
+    <div class="row">
+
+      <!-- Sidebar Filters -->
+      <div class="col-md-3 mb-4">
+        <div class="bg-white p-3 rounded shadow-sm">
+          <h5 class="mb-3">Filters</h5>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <h6>Price</h6>
+            <input type="range" class="form-range" min="0" max="5000">
+            <small class="text-muted">Min - Max</small>
+          </div>
+
+          <!-- Brand -->
+          <div class="mb-3" id="brand-filters">
+            <h6>Brand</h6>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="autox" id="brand-autox">
+              <label class="form-check-label" for="brand-autox">AutoX</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="autocare" id="brand-autocare">
+              <label class="form-check-label" for="brand-autocare">AutoCare</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="freshride" id="brand-freshride">
+              <label class="form-check-label" for="brand-freshride">FreshRide</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input brand-checkbox" type="checkbox" value="carpro" id="brand-carpro">
+              <label class="form-check-label" for="brand-carpro">CarPro</label>
+            </div>
+          </div>
+
+          <!-- Ratings -->
+          <div class="mb-3">
+            <h6>Customer Ratings</h6>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">4★ & above</label></div>
+            <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label class="form-check-label">3★ & above</label></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Listing -->
+      <div class="col-md-9">
+
+        <!-- Search + Sort -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <input type="text" id="search-box" class="form-control w-50" placeholder="Search products...">
+          <select class="form-select w-25" id="sort-select">
+            <option value="">Sort by</option>
+            <option value="price-low-high">Price: Low to High</option>
+            <option value="price-high-low">Price: High to Low</option>
+            <option value="newest">Newest</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+
+        <!-- Product Container -->
+        <div id="product-container">
+
+          <!-- Product 1 -->
+          <div class="product-card d-flex" data-brand="autox">
+            <img src="https://images.unsplash.com/photo-1612991572881-8aa20f1fa0b3?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Mats">
+            <div>
+              <h5>AutoX Premium Car Mats</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(1,200 Ratings & 230 Reviews)</small>
+              <p class="mt-2">Durable, Waterproof, Fits Most Cars</p>
+              <div class="price">₹1,499 <span class="old-price">₹2,499</span> <span class="offer">40% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+
+          <!-- Product 2 -->
+          <div class="product-card d-flex" data-brand="autocare">
+            <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Steering Cover">
+            <div>
+              <h5>AutoCare Leather Steering Cover</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(980 Ratings & 150 Reviews)</small>
+              <p class="mt-2">Soft Leather | Anti-Slip | Easy to Install</p>
+              <div class="price">₹799 <span class="old-price">₹1,299</span> <span class="offer">38% off</span></div>
+              <p class="offer">Bank Offer • Free Shipping</p>
+            </div>
+          </div>
+
+          <!-- Product 3 -->
+          <div class="product-card d-flex" data-brand="autox">
+            <img src="https://images.unsplash.com/photo-1606851094377-7c82c4b8872c?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Seat Cover">
+            <div>
+              <h5>AutoX Premium Car Seat Cover</h5>
+              <span class="rating">4.3 ★</span> <small class="text-muted">(850 Ratings & 120 Reviews)</small>
+              <p class="mt-2">Durable Fabric | Comfortable | Easy to Clean</p>
+              <div class="price">₹2,199 <span class="old-price">₹3,499</span> <span class="offer">37% off</span></div>
+              <p class="offer">Exchange Offer • Free Delivery</p>
+            </div>
+          </div>
+
+          <!-- Product 4 -->
+          <div class="product-card d-flex" data-brand="freshride">
+            <img src="https://images.unsplash.com/photo-1592928300586-b1a1c0b8b592?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Air Freshener">
+            <div>
+              <h5>FreshRide Car Air Freshener Pack</h5>
+              <span class="rating">4.7 ★</span> <small class="text-muted">(1,540 Ratings & 400 Reviews)</small>
+              <p class="mt-2">Long-Lasting Fragrance | Pack of 3</p>
+              <div class="price">₹499 <span class="old-price">₹799</span> <span class="offer">38% off</span></div>
+              <p class="offer">Free Delivery • Bank Discount</p>
+            </div>
+          </div>
+
+          <!-- Product 5 - New -->
+          <div class="product-card d-flex" data-brand="carpro">
+            <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Phone Holder">
+            <div>
+              <h5>CarPro Universal Phone Holder</h5>
+              <span class="rating">4.8 ★</span> <small class="text-muted">(2,100 Ratings & 320 Reviews)</small>
+              <p class="mt-2">360° Rotation | One-Touch Release | Fits All Phones</p>
+              <div class="price">₹899 <span class="old-price">₹1,499</span> <span class="offer">40% off</span></div>
+              <p class="offer">Free Shipping • Bank Offer</p>
+            </div>
+          </div>
+
+          <!-- Product 6 - New -->
+          <div class="product-card d-flex" data-brand="autocare">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Vacuum Cleaner">
+            <div>
+              <h5>AutoCare Portable Car Vacuum</h5>
+              <span class="rating">4.4 ★</span> <small class="text-muted">(1,350 Ratings & 210 Reviews)</small>
+              <p class="mt-2">Cordless | 120W Power | Rechargeable Battery</p>
+              <div class="price">₹2,499 <span class="old-price">₹3,999</span> <span class="offer">38% off</span></div>
+              <p class="offer">Free Delivery • 1 Year Warranty</p>
+            </div>
+          </div>
+
+          <!-- Product 7 - New -->
+          <div class="product-card d-flex" data-brand="carpro">
+            <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Charger">
+            <div>
+              <h5>CarPro Fast Charging USB Adapter</h5>
+              <span class="rating">4.6 ★</span> <small class="text-muted">(1,780 Ratings & 290 Reviews)</small>
+              <p class="mt-2">QC 3.0 Fast Charging | Dual USB Ports | LED Display</p>
+              <div class="price">₹699 <span class="old-price">₹1,199</span> <span class="offer">42% off</span></div>
+              <p class="offer">Bank Discount • Free Delivery</p>
+            </div>
+          </div>
+
+          <!-- Product 8 - New -->
+          <div class="product-card d-flex" data-brand="freshride">
+            <img src="https://images.unsplash.com/photo-1564951434165-8d5e1c075d80?auto=format&fit=crop&w=180&h=180" class="product-img me-3" alt="Car Organizer">
+            <div>
+              <h5>FreshRide Backseat Organizer</h5>
+              <span class="rating">4.5 ★</span> <small class="text-muted">(950 Ratings & 140 Reviews)</small>
+              <p class="mt-2">Multi-Pocket Design | Durable Fabric | Easy Installation</p>
+              <div class="price">₹1,299 <span class="old-price">₹1,999</span> <span class="offer">35% off</span></div>
+              <p class="offer">Free Shipping • Bank Offer</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sortSelect = document.getElementById('sort-select');
+      const container = document.getElementById('product-container');
+      const searchBox = document.getElementById('search-box');
+      const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+
+      let products = Array.from(container.querySelectorAll('.product-card'));
+
+      function extractPrice(priceText) {
+        return parseFloat(priceText.replace(/[₹,]/g, ''));
+      }
+
+      function extractRating(ratingText) {
+        return parseFloat(ratingText);
+      }
+
+       products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+      function applyFilters() {
+        const searchValue = searchBox.value.toLowerCase();
+        const selectedBrands = Array.from(brandCheckboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+
+        let filtered = products.filter(card => {
+          const brand = card.dataset.brand;
+          const title = card.querySelector('h5').textContent.toLowerCase();
+
+          const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+          const matchesSearch = title.includes(searchValue);
+
+          return matchesBrand && matchesSearch;
+        });
+
+        return filtered;
+      }
+
+      function applySorting(filtered) {
+        const sortBy = sortSelect.value;
+
+        switch (sortBy) {
+          case 'price-low-high':
+            filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+            break;
+          case 'price-high-low':
+            filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+            break;
+          case 'newest':
+            filtered.reverse();
+            break;
+          case 'popularity':
+            filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+            break;
+        }
+
+        return filtered;
+      }
+
+      function render() {
+        let filtered = applyFilters();
+        filtered = applySorting(filtered);
+
+        container.innerHTML = '';
+        filtered.forEach(card => container.appendChild(card));
+      }
+
+      sortSelect.addEventListener('change', render);
+      searchBox.addEventListener('input', render);
+      brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+      render();
+    });
+  </script>
+</body>
+</html>

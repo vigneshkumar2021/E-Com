@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shop - Board Games | MyShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .product-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #d32f2f;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            margin-left: 10px;
+        }
+
+        .rating {
+            background: #388e3c;
+            color: #fff;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .offer {
+            color: #388e3c;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-bag"></i> MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="products.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="customer-cart.html"><i class="bi bi-cart"></i> Cart</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="bi bi-person"></i> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Section -->
+    <div class="container my-4">
+        <div class="row">
+
+            <!-- Sidebar Filters -->
+            <div class="col-md-3 mb-4">
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <h5 class="mb-3">Filters</h5>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <h6>Price</h6>
+                        <input type="range" class="form-range" min="0" max="60000">
+                        <small class="text-muted">Min - Max</small>
+                    </div>
+
+                    <!-- Brand -->
+                    <div class="mb-3" id="brand-filters">
+                        <h6>Brand</h6>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="chessboard" id="brand-chessboard">
+                            <label class="form-check-label" for="brand-chessboard">Chessboard</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="monopoly" id="brand-monopoly">
+                            <label class="form-check-label" for="brand-monopoly">Monopoly</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="ludo" id="brand-ludo">
+                            <label class="form-check-label" for="brand-ludo">Ludo</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="carrom" id="brand-carrom">
+                            <label class="form-check-label" for="brand-carrom">Carrom</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input brand-checkbox" type="checkbox" value="scrabble" id="brand-scrabble">
+                            <label class="form-check-label" for="brand-scrabble">Scrabble</label>
+                        </div>
+                    </div>
+
+                    <!-- Ratings -->
+                    <div class="mb-3">
+                        <h6>Customer Ratings</h6>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label
+                                class="form-check-label">4★ & above</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="rating"> <label
+                                class="form-check-label">3★ & above</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Listing -->
+            <div class="col-md-9">
+
+                <!-- Search + Sort -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <input type="text" id="search-box" class="form-control w-50" placeholder="Search products...">
+                    <select class="form-select w-25" id="sort-select">
+                        <option value="">Sort by</option>
+                        <option value="price-low-high">Price: Low to High</option>
+                        <option value="price-high-low">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                        <option value="popularity">Popularity</option>
+                    </select>
+                </div>
+
+                <!-- Product Container -->
+                <div id="product-container">
+                    <!-- Product Row 1 - Chess -->
+                    <div class="product-card d-flex" data-brand="chessboard">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.LaFNO-5bo7lNvyGYmlbKDQHaD4?pid=Api&P=0&h=180" 
+                             class="product-img me-3" alt="Wooden Chess Set">
+                        <div>
+                            <h5>Classic Wooden Chess Set (Magnetic, Foldable)</h5>
+                            <span class="rating">4.8 ★</span> <small class="text-muted">(2,321 Ratings & 345 Reviews)</small>
+                            <p class="mt-2">High-quality wooden chessboard with magnetic pieces. Perfect for beginners & pros.</p>
+                            <div class="price">₹1,499 <span class="old-price">₹1,999</span> <span class="offer">25% off</span></div>
+                            <p class="offer">Free Delivery • Bank Offer</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 2 - Monopoly -->
+                    <div class="product-card d-flex" data-brand="monopoly">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.3llWVeu2nXUpNXkCZ7VmywHaFb?pid=Api&P=0&h=180" 
+                             class="product-img me-3" alt="Monopoly Classic Edition">
+                        <div>
+                            <h5>Monopoly Classic Edition (Family Board Game)</h5>
+                            <span class="rating">4.6 ★</span> <small class="text-muted">(4,521 Ratings & 892 Reviews)</small>
+                            <p class="mt-2">Buy, sell, and trade properties in the world’s most popular family board game.</p>
+                            <div class="price">₹1,999 <span class="old-price">₹2,499</span> <span class="offer">20% off</span></div>
+                            <p class="offer">Bank Offer • Free Shipping</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 3 - Scrabble -->
+                    <div class="product-card d-flex" data-brand="scrabble">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.mVWyML95kJgpJ348mftbRAHaHa?pid=Api&P=0&h=180" 
+                             class="product-img me-3" alt="Scrabble Original">
+                        <div>
+                            <h5>Scrabble Original (Word Board Game)</h5>
+                            <span class="rating">4.7 ★</span> <small class="text-muted">(3,134 Ratings & 504 Reviews)</small>
+                            <p class="mt-2">Test your vocabulary skills in this addictive word-building board game.</p>
+                            <div class="price">₹1,299 <span class="old-price">₹1,599</span> <span class="offer">19% off</span></div>
+                            <p class="offer">Upto ₹500 Off on Exchange • Free Delivery</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 4 - Ludo -->
+                    <div class="product-card d-flex" data-brand="ludo">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.8S9HRX8NjDV0jZzkdAJx3gHaFj?pid=Api&P=0&h=180" 
+                             class="product-img me-3" alt="Ludo Board Game">
+                        <div>
+                            <h5>Ludo King Board Game (Multicolor, Family Fun)</h5>
+                            <span class="rating">4.5 ★</span> <small class="text-muted">(1,902 Ratings & 276 Reviews)</small>
+                            <p class="mt-2">Classic family board game with colorful design. Fun for all age groups.</p>
+                            <div class="price">₹499 <span class="old-price">₹699</span> <span class="offer">28% off</span></div>
+                            <p class="offer">Bank Discount • Free Delivery</p>
+                        </div>
+                    </div>
+
+                    <!-- Product Row 5 - Carrom -->
+                    <div class="product-card d-flex" data-brand="carrom">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.Gi3BzRdkjZ0_zLEu3gtAxAHaE8?pid=Api&P=0&h=180" 
+                             class="product-img me-3" alt="Carrom Board">
+                        <div>
+                            <h5>Premium Carrom Board (Wooden, 32-inch)</h5>
+                            <span class="rating">4.6 ★</span> <small class="text-muted">(2,054 Ratings & 332 Reviews)</small>
+                            <p class="mt-2">Smooth surface wooden carrom board with coins & striker included.</p>
+                            <div class="price">₹2,499 <span class="old-price">₹2,999</span> <span class="offer">17% off</span></div>
+                            <p class="offer">Free Delivery • Bank Offer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 MyShop. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sortSelect = document.getElementById('sort-select');
+        const container = document.getElementById('product-container');
+        const searchBox = document.getElementById('search-box');
+        const brandCheckboxes = document.querySelectorAll('.brand-checkbox');
+
+        let products = Array.from(container.querySelectorAll('.product-card'));
+        products.forEach(card => {
+                card.addEventListener('click', () => {
+                    const productData = {
+                        title: card.querySelector('h5').textContent,
+                        img: card.querySelector('img').src,
+                        price: card.querySelector('.price').childNodes[0].textContent.trim(),
+                        oldPrice: card.querySelector('.old-price')?.textContent || '',
+                        rating: card.querySelector('.rating').textContent,
+                        description: card.querySelector('p')?.textContent || ''
+                    };
+
+                    // Save to localStorage
+                    localStorage.setItem("selectedProduct", JSON.stringify(productData));
+
+                    // Redirect to details page
+                    window.location.href = "product-details.html";
+                });
+            });
+
+        function extractPrice(priceText) {
+            return parseFloat(priceText.replace(/[₹,]/g, ''));
+        }
+
+        function extractRating(ratingText) {
+            return parseFloat(ratingText);
+        }
+
+        function applyFilters() {
+            const searchValue = searchBox.value.toLowerCase();
+            const selectedBrands = Array.from(brandCheckboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            let filtered = products.filter(card => {
+                const brand = card.dataset.brand;
+                const title = card.querySelector('h5').textContent.toLowerCase();
+
+                const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(brand);
+                const matchesSearch = title.includes(searchValue);
+
+                return matchesBrand && matchesSearch;
+            });
+
+            return filtered;
+        }
+
+        function applySorting(filtered) {
+            const sortBy = sortSelect.value;
+
+            switch (sortBy) {
+                case 'price-low-high':
+                    filtered.sort((a, b) => extractPrice(a.querySelector('.price').textContent) - extractPrice(b.querySelector('.price').textContent));
+                    break;
+                case 'price-high-low':
+                    filtered.sort((a, b) => extractPrice(b.querySelector('.price').textContent) - extractPrice(a.querySelector('.price').textContent));
+                    break;
+                case 'newest':
+                    filtered.reverse();
+                    break;
+                case 'popularity':
+                    filtered.sort((a, b) => extractRating(b.querySelector('.rating').textContent) - extractRating(a.querySelector('.rating').textContent));
+                    break;
+            }
+
+            return filtered;
+        }
+
+        function render() {
+            let filtered = applyFilters();
+            filtered = applySorting(filtered);
+
+            container.innerHTML = '';
+            filtered.forEach(card => container.appendChild(card));
+        }
+
+        // Events
+        sortSelect.addEventListener('change', render);
+        searchBox.addEventListener('input', render);
+        brandCheckboxes.forEach(cb => cb.addEventListener('change', render));
+
+        render(); // Initial load
+    });
+    </script>
+</body>
+
+</html>
